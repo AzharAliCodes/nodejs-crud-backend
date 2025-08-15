@@ -20,7 +20,7 @@ const getItems = async (req, res) =>{
 
 const getItemById = async (req,res) => {
     try {
-        const item = await Item.find(req.params.id);
+        const item = await Item.findById(req.params.id);
         if (!item) return res.status(404).json({error : 'Item Not found'})
          res.status(200).json(item);
     }catch (error){
@@ -44,7 +44,7 @@ const updateItem = async (req, res) =>{
 
 const deleteItem = async (req , res) => {
     try {
-        const deleteItem = await Item.findByIfAndDelete(req.params.id);
+        const deleteItem = await Item.findByIdAndDelete(req.params.id);
         if (!deleteItem) return res.status(404).json({error: 'Item not found'})
         res.status(200).json({message: 'Item deleted successfully'});
     } catch (err) {
