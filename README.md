@@ -66,7 +66,6 @@ npm install
 
 ```
 MONGO_URI=your_mongo_connection_string
-PORT=3000
 ```
 
 4. **Run in development mode**
@@ -74,6 +73,10 @@ PORT=3000
 ```bash
 npm run dev
 ```
+
+5. **Open your browser or Postman**
+   Go to: <br>
+   [http://localhost:3000](http://localhost:3000) – You should see **"server is running"**.
 
 ---
 
