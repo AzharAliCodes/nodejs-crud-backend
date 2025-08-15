@@ -5,6 +5,9 @@ const itemRoutes = require('./routes/itemRoutes')
 require('dotenv').config();
 const app = express();
 
+app.use(express.json());
+app.use('/api', itemRoutes)
+
 const PORT = 3000;
 connectDB();
 
