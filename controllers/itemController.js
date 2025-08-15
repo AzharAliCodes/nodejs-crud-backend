@@ -5,7 +5,10 @@ const createItem = async (req, res) => {
         const newItem = await Item.create(req.body);
         res.status(201).json(newItem)
     } catch (err){
-        res.status(400).json({err:err.message})
+        if (err.name === 'ValidationError'){
+        return res.status(400).json({err:err.message})
+        }
+        res.status(500).json({err: 'server Error'})
     }
 };
 
@@ -23,9 +26,12 @@ const getItemById = async (req,res) => {
         const item = await Item.findById(req.params.id);
         if (!item) return res.status(404).json({error : 'Item Not found'})
          res.status(200).json(item);
-    }catch (error){
-        res.status(400).json({err: 'Invlid ID format'})
-    }
+    }catch (err){
+        if (err.name === 'CastError'){
+        return res.status(400).json({err: 'Invlid ID format'})
+        }
+        res.status(500).json({error: 'server Error'})
+    } 
 }
 
 const updateItem = async (req, res) =>{
@@ -38,7 +44,13 @@ const updateItem = async (req, res) =>{
         if (!updateItem) return res.status(404).json({error: 'Item Not found'});
         res.status(200).json(updateItem);
     } catch (error){
-        res.status(400).json({error: error.message})
+        if (err.name === 'ValidationError'){
+        return res.status(400).json({err:err.message})
+        }
+        if (err.name === 'CastError'){
+        return res.status(400).json({err: 'Invlid ID format'})
+        }
+        res.status(500).json({error: 'server Error'})
     }
 }
 
@@ -48,7 +60,10 @@ const deleteItem = async (req , res) => {
         if (!deleteItem) return res.status(404).json({error: 'Item not found'})
         res.status(200).json({message: 'Item deleted successfully'});
     } catch (err) {
-        res.status(400).json({err: 'Invalid ID format'});
+        if (err.name === 'CastError'){
+        return res.status(400).json({err: 'Invlid ID format'})
+        }
+        res.status(500).json({err: 'Server Error'});
     }
 }
 
