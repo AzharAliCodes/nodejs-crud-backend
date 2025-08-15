@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Name is requried']
         },
-        email:{
+        email:{ 
             type:String,
             requried: [true, 'Email is requried'],
             unique: true
@@ -19,7 +19,7 @@ const itemSchema = new mongoose.Schema(
         type:{
             type: String,
             enum:['personal','work'],
-            default:'Personal'
+            default:'personal'
         },
     },
     {timestamps: true}
