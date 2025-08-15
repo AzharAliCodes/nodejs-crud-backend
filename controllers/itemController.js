@@ -75,28 +75,3 @@ module.exports ={
     updateItem,
     deleteItem
 }
-
-
-// Task 5: Error Handling & Validation
-
-// Add proper error messages for invalid requests.
-
-// Validate incoming data using Mongoose validation rules.
-
-// Return correct HTTP status codes (400, 404, 500).
-
-// Task 6: API Testing with Postman
-
-// Test every endpoint (POST, GET all, GET by ID, PUT, DELETE).
-
-// Check success responses and error scenarios.
-
-// Document example requests & responses in Postman (optional: export collection).
-
-// Task 7: Project Cleanup & Documentation
-
-// Remove test routes like /test-add.
-
-// Clean unused code/files.
-
-// Write a README.md with project setup, endpoints, and usage.
